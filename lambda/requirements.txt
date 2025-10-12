@@ -1,0 +1,2 @@
+# AWS Lambda has boto3 pre-installed, but we'll specify version
+boto3>=1.34.0

@@ -1,0 +1,14 @@
+def __init__(self, region: str = 'us-east-1', model_id: str = None):
+    self.region = region
+    # Claude 3.5 Sonnet - works directly without inference profile
+    self.model_id = model_id or 'anthropic.claude-3-5-sonnet-20240620-v1:0'
+    
+    try:
+        self.bedrock_runtime = boto3.client(
+            service_name='bedrock-runtime',
+            region_name=region
+        )
+        logger.info(f'✅ Bedrock client initialized - Region: {region}, Model: {self.model_id}')
+    except Exception as e:
+        logger.error(f'❌ Failed to initialize Bedrock client: {e}')
+        raise
