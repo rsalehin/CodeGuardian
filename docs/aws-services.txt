@@ -1,0 +1,45 @@
+# AWS Services Integration
+
+## Services Used
+
+\\\
+┌─────────────────────────────────────────────────────────┐
+│                  AWS ACCOUNT                             │
+│                                                          │
+│  ┌────────────────────────────────────────────────┐    │
+│  │         AMAZON BEDROCK                          │    │
+│  │                                                 │    │
+│  │  ┌──────────────────────────────────────┐     │    │
+│  │  │  Nova Lite LLM                        │     │    │
+│  │  │  - Reasoning & Decision Making        │     │    │
+│  │  │  - Natural Language Understanding     │     │    │
+│  │  └──────────────────────────────────────┘     │    │
+│  │                                                 │    │
+│  │  ┌──────────────────────────────────────┐     │    │
+│  │  │  AgentCore                            │     │    │
+│  │  │  - Tool Orchestration                 │     │    │
+│  │  │  - Autonomous Behavior Framework      │     │    │
+│  │  └──────────────────────────────────────┘     │    │
+│  │                                                 │    │
+│  └─────────────────────────────────────────────── │    │
+│                                                          │
+│  ┌────────────────────────────────────────────────┐    │
+│  │         AWS IAM                                 │    │
+│  │  - Secure Credential Management                │    │
+│  │  - Role-Based Access Control                   │    │
+│  └────────────────────────────────────────────────┘    │
+│                                                          │
+└──────────────────────────────────────────────────────────┘
+
+External Tools (running in agent):
+├─ Bandit Security Scanner
+├─ Python AST Parser
+└─ File System Access
+\\\
+
+## Cost & Performance
+
+- **Model:** Amazon Nova Lite
+- **Cost:** ~\.0003 per analysis
+- **Speed:** < 2 minutes per repository
+- **Scalability:** Unlimited concurrent analyses
