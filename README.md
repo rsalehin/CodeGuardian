@@ -52,7 +52,7 @@ CodeGuardian operates as a multi-step autonomous agent. Given a target repositor
 
 The agent operates through a modular, tool-based architecture orchestrated by AWS Bedrock. The system is deployed using a serverless AWS stack for scalability and maintainability.
 
-**(./docs/architecture.png)**
+**(./docs/Code Guardian System Overview.png)**
 
 ### Core Components
 
