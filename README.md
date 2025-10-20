@@ -3,6 +3,11 @@
 [![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![AWS Bedrock](https://img.shields.io/badge/AWS-Bedrock-orange)](https://aws.amazon.com/bedrock/)
+[![AWS AgentCore](https://img.shields.io/badge/AWS-AgentCore-orange)](https://aws.amazon.com/)
+[![AWS Lambda](https://img.shields.io/badge/AWS-Lambda-yellow)](https://aws.amazon.com/lambda/)
+[![AWS API Gateway](https://img.shields.io/badge/AWS-API_Gateway-blueviolet)](https://aws.amazon.com/api-gateway/)
+[![AWS S3](https://img.shields.io/badge/AWS-S3-lightgrey)](https://aws.amazon.com/s3/)
+
 
 CodeGuardian is an autonomous AI agent designed to detect, analyze, remediate, and validate security vulnerabilities within Python codebases. It leverages Amazon Bedrock and AgentCore to orchestrate a suite of tools, automating the entire security fix lifecycle from discovery to validation.
 
