@@ -1,9 +1,0 @@
-# AWS SDK (pre-installed in Lambda, but specify version)
-boto3>=1.34.0
-botocore>=1.34.0
-
-# Security scanning
-bandit>=1.7.5
-
-# Python utilities
-python-dotenv>=1.0.0

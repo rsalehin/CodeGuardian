@@ -1,37 +1,8 @@
-# Python
-__pycache__/
-*.py[cod]
-*.class
-*.so
-.Python
-venv/
-env/
-ENV/
-
-# Environment variables
-.env
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-
-
-# Project specific
-reasoning_chain_*.json
-results_*.json
-report_*.md
-*.backup
 # --- Critical: Credentials and Secrets ---
-# NEVER commit your .env file or AWS credentials.
 .env
 .aws/
-*.zip
-.aws-sam/
 
 # --- Python: Virtual Environments ("Packages") ---
-# This is the "packages" folder you mentioned.
 venv/
 .venv/
 env/
@@ -50,9 +21,11 @@ __pycache__/
 .coverage
 htmlcov/
 
+# --- Deployment: AWS SAM / Lambda ("Lambda Stuffs") ---
+*.zip
+.aws-sam/
 
 # --- Deployment: Terraform ---
-# If you use Terraform to manage AWS resources.
 .terraform/
 *.tfstate
 *.tfstate.backup
@@ -66,5 +39,13 @@ htmlcov/
 Thumbs.db
 desktop.ini
 
-# --- Logs ---
+# --- Logs & Artifacts (NEW) ---
 *.log
+bandit_output.json
+bedrock_init_fix.txt
+
+# --- Custom Build/Package Folders (NEW - ADD YOURS) ---
+# If these are package/build folders, add them here:
+lambda/
+lambda-deploy/
+package/
