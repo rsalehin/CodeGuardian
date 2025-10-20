@@ -133,30 +133,32 @@ Agent Reasoning (Iteration 5): "All my fixes are valid. I will now compile the f
 Final Response: (Generates the full report with "before" and "after" snippets).
 ```
 
-### Project Structure
+### 📁 Project Structure
 
+```bash
 codeGuardian/
 ├── src/
-│ ├── agents/
-│ │ ├── bedrock_client.py # Wrapper for AWS Bedrock converse API
-│ │ ├── security_agent.py # (Legacy) Simple analysis agent
-│ │ └── autonomous_agent.py # Main autonomous orchestration logic
-│ ├── tools/
-│ │ ├── tool_definitions.py # AgentCore tool schemas (the "menu")
-│ │ ├── tool_executor.py # Python logic for executing tools
-│ │ └── security_scanner.py # Bandit scanner integration
-│ └── init.py
+│   ├── agents/
+│   │   ├── bedrock_client.py         # Wrapper for AWS Bedrock converse API
+│   │   ├── security_agent.py         # (Legacy) Simple analysis agent
+│   │   └── autonomous_agent.py       # Main autonomous orchestration logic
+│   ├── tools/
+│   │   ├── tool_definitions.py       # AgentCore tool schemas (the "menu")
+│   │   ├── tool_executor.py          # Python logic for executing tools
+│   │   └── security_scanner.py       # Bandit scanner integration
+│   └── __init__.py
 ├── tests/
-│ ├── test_autonomous_agent.py # Tests autonomous behavior
-│ ├── test_bedrock_client.py # Tests Bedrock connection
-│ ├── test_security_scanner.py # Tests Bandit integration
-│ └── test_tool_executor.py # Tests tool logic
-├── vulnerable-flask-app/ # Demo Flask app with security flaws
-├── vulnerable-django-api/ # Demo Django REST API with security flaws
-├── vulnerable-express-api/ # Demo Express.js API with security flaws
-├── .env.example # Environment variable template
+│   ├── test_autonomous_agent.py      # Tests autonomous behavior
+│   ├── test_bedrock_client.py        # Tests Bedrock connection
+│   ├── test_security_scanner.py      # Tests Bandit integration
+│   └── test_tool_executor.py         # Tests tool logic
+├── vulnerable-flask-app/             # Demo Flask app with security flaws
+├── vulnerable-django-api/            # Demo Django REST API with security flaws
+├── vulnerable-express-api/           # Demo Express.js API with security flaws
+├── .env.example                      # Environment variable template
 ├── requirements.txt
 └── README.md
+
 
 ### Testing
 
