@@ -45,7 +45,7 @@ The following components make up the system:
 
 ### 1. Installation
 
-# ```shell
+```shell
 # Clone the repository
 git clone https://github.com/rsalehin/codeGuardian.git
 cd codeGuardian
@@ -79,7 +79,7 @@ The agent can be run programmatically or as a standalone script.
 This example demonstrates how to import and run the agent within your own application.
 
 
-```
+```python
 from src.agents.autonomous_agent import AutonomousSecurityAgentfrom src.agents.bedrock_client import BedrockClient# Initialize the Bedrock client# Credentials will be loaded automatically from your .env or AWS environment
 bedrock_client = BedrockClient(region='us-east-1')# Initialize the autonomous agent
 agent = AutonomousSecurityAgent(
@@ -93,6 +93,7 @@ print(f"Tools Used: {len(result['tools_used'])}")
 print("--- Final Response ---")
 print(result['final_response'])
 ```
+
 ```bash
 # This will load the agent and run the `analyze_repository_autonomous` method
 python -m src.agents.autonomous_agent
@@ -121,11 +122,14 @@ result = agent.analyze_repository_autonomous()
 
 # View results
 
+```python
 print(f"Analysis Complete: {result['success']}")
 print(f"Tools Used: {len(result['tools_used'])}")
 print("--- Final Response ---")
 print(result['final_response'])
 ```
+
+```bash
 Agent Reasoning (Iteration 4): "I must validate my generated code fixes before recommending them."
 Tool Call: validate_python_syntax(code='import os\napp.secret_key = os.getenv(\"SECRET_KEY\")')
 Tool Call: validate_python_syntax(code='import json\ndata = json.loads(user_input)')
@@ -158,7 +162,7 @@ codeGuardian/
 ├── .env.example                      # Environment variable template
 ├── requirements.txt
 └── README.md
-
+```
 
 ### Testing
 
