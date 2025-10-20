@@ -10,7 +10,8 @@ CodeGuardian is an autonomous AI agent designed to detect, analyze, remediate, a
 
 A live, interactive demonstration of the CodeGuardian agent is deployed and accessible here:
 
-**[https://codeguardian-demo.s3.us-east-1.amazonaws.com/index.html]**
+**Live Demo:** [Click here to view](https://codeguardian-demo.s3.us-east-1.amazonaws.com/index.html)
+
 
 ---
 
