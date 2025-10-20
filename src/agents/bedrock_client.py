@@ -41,12 +41,22 @@ class BedrockClient:
         try:
             # Build full prompt
             full_prompt = prompt
+            
+            # --- FIX: ---
+            # Use the 'system' parameter for converse API instead of prepending
+            # This is the modern, correct way and works better with tool use.
+            system_messages = []
             if system_prompt:
-                full_prompt = f"{system_prompt}\n\n{prompt}"
+                system_messages = [{'text': system_prompt}]
+                
             
             # Check if DeepSeek (needs legacy API)
             if 'deepseek' in self.model_id.lower():
                 logger.info('🤖 Using legacy API for DeepSeek-R1')
+                
+                # Deepseek doesn't support system prompts well, so we prepend
+                if system_prompt:
+                    full_prompt = f"{system_prompt}\n\n{prompt}"
                 
                 request_body = json.dumps({
                     "prompt": full_prompt,
@@ -86,6 +96,10 @@ class BedrockClient:
                 response = self.bedrock_runtime.converse(
                     modelId=self.model_id,
                     messages=messages,
+                    # --- FIX: ---
+                    # Pass the system prompt to the API
+                    system=system_messages,
+                    # --- END FIX ---
                     inferenceConfig={
                         'maxTokens': max_tokens,
                         'temperature': temperature,
@@ -120,6 +134,10 @@ class BedrockClient:
         self,
         messages: List[Dict],
         tools: List[Dict],
+        # --- FIX: ---
+        # Add a new parameter to accept a system prompt
+        system_prompt: Optional[str] = None,
+        # --- END FIX ---
         max_iterations: int = 10
     ) -> Dict[str, Any]:
         """Invoke model with tool calling capability (AgentCore)"""
@@ -128,6 +146,13 @@ class BedrockClient:
         
         logger.info(f'🤖 Starting tool-enabled conversation (max {max_iterations} iterations)')
         
+        # --- FIX: ---
+        # Prepare the system prompt for the converse API
+        system_messages = []
+        if system_prompt:
+            system_messages = [{'text': system_prompt}]
+        # --- END FIX ---
+
         while iteration < max_iterations:
             iteration += 1
             logger.info(f'🔄 Iteration {iteration}/{max_iterations}')
@@ -136,6 +161,10 @@ class BedrockClient:
                 response = self.bedrock_runtime.converse(
                     modelId=self.model_id,
                     messages=conversation,
+                    # --- FIX: ---
+                    # Pass the system prompt to the API
+                    system=system_messages,
+                    # --- END FIX ---
                     inferenceConfig={
                         'maxTokens': 4096,
                         'temperature': 0.7,

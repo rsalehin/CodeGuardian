@@ -99,7 +99,13 @@ class ToolExecutor:
         - Converts Vulnerability objects to JSON-serializable dicts
         - Provides summary statistics
         """
-        repo_path = params.get('repo_path', str(self.repo_path))
+        # --- FIX: ---
+        # We IGNORE any 'repo_path' from the agent (which might be
+        # hallucinated) and ALWAYS use the correct path this
+        # executor was initialized with.
+        repo_path = str(self.repo_path)
+        # --- END FIX ---
+        
         min_severity = params.get('min_severity', 'MEDIUM')
         
         # Scan using our scanner

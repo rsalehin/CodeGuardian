@@ -351,9 +351,10 @@
                     <div class="input-group">
                         <label for="repoSelect">📁 Select Repository to Analyze:</label>
                         <select id="repoSelect">
-                            <option value="demo">Demo: Vulnerable Flask App (23 vulnerabilities)</option>
-                            <option value="custom">Custom Repository (Coming Soon)</option>
-                        </select>
+    <option value="flask">Vulnerable Flask App (Python - 23 issues)</option>
+    <option value="django">Vulnerable Django API (Python - 6 issues)</option>
+    <option value="express">Vulnerable Express API (Node.js - 7 issues)</option>
+</select>
                     </div>
 
                     <button id="analyzeBtn" onclick="startAnalysis()">
@@ -385,6 +386,7 @@
         <div id="progressCard" class="card hidden">
             <h2>🤖 Agent Activity</h2>
             <div id="progressLog" class="progress-section">
+                <!-- Progress items will be added dynamically -->
             </div>
         </div>
 
@@ -405,12 +407,13 @@
                     <div class="stat-label">Files Analyzed</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number" id="fixesGenerated">0</div>
+                    <div class="stat-number\" id="fixesGenerated">0</div>
                     <div class="stat-label">Fixes Generated</div>
                 </div>
             </div>
 
             <div id="vulnerabilities" class="results-section">
+                <!-- Vulnerability cards will be added dynamically -->
             </div>
         </div>
     </div>

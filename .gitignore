@@ -17,12 +17,54 @@ ENV/
 *.swp
 *.swo
 
-# OS
-.DS_Store
-Thumbs.db
 
 # Project specific
 reasoning_chain_*.json
 results_*.json
 report_*.md
 *.backup
+# --- Critical: Credentials and Secrets ---
+# NEVER commit your .env file or AWS credentials.
+.env
+.aws/
+*.zip
+.aws-sam/
+
+# --- Python: Virtual Environments ("Packages") ---
+# This is the "packages" folder you mentioned.
+venv/
+.venv/
+env/
+.env/
+*.egg-info/
+.eggs/
+
+# --- Python: Cache and Artifacts ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# --- Python: Test & Coverage Reports ---
+.pytest_cache/
+.coverage
+htmlcov/
+
+
+# --- Deployment: Terraform ---
+# If you use Terraform to manage AWS resources.
+.terraform/
+*.tfstate
+*.tfstate.backup
+
+# --- IDE & Editor Config ---
+.vscode/
+.idea/
+
+# --- OS-generated Files ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Logs ---
+*.log
