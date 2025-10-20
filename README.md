@@ -93,19 +93,23 @@ pip install -r requirements.txt
 
 # Create a .env file from the example
 cp .env.example .env
+```
+
 Finally, edit the .env file to include your AWS credentials.
+
 2. Enable Bedrock Model Access
 Navigate to the AWS Bedrock Console.
 In the bottom-left sidebar, click on Model access.
 Click Manage model access.
 Ensure that Amazon Nova Lite is enabled (Access granted).
-Usage
+
+### Usage
 The agent can be run programmatically or as a standalone script.
-Programmatic Usage
+#### Programmatic Usage
 This example demonstrates how to import and run the agent within your own application.
 
 Python
-
+```
 from src.agents.autonomous_agent import AutonomousSecurityAgentfrom src.agents.bedrock_client import BedrockClient# Initialize the Bedrock client# Credentials will be loaded automatically from your .env or AWS environment
 bedrock_client = BedrockClient(region='us-east-1')# Initialize the autonomous agent
 agent = AutonomousSecurityAgent(
@@ -118,11 +122,13 @@ print(f"Analysis Complete: {result['success']}")
 print(f"Tools Used: {len(result['tools_used'])}")
 print("--- Final Response ---")
 print(result['final_response'])
+```
+
 Command-Line Interface (Example)
 You can also trigger a default analysis by running the autonomous_agent module directly.
 
 Shell
-
+```
 # This will load the agent and run the `analyze_repository_autonomous` method
 python -m src.agents.autonomous_agent
 How It Works: Autonomous Reasoning
@@ -142,48 +148,46 @@ Tool Call: validate_python_syntax(code='import os\napp.secret_key = os.getenv(\"
 Tool Call: validate_python_syntax(code='import json\ndata = json.loads(user_input)')
 Agent Reasoning (Iteration 5): "All my fixes are valid. I will now compile the final report for the user."
 Final Response: (Generates the full report with "before" and "after" snippets).
-Project Structure
+```text
+
+### Project Structure
 codeGuardian/
 ├── src/
-│   ├── agents/
-│   │   ├── bedrock_client.py     # Wrapper for AWS Bedrock converse API
-│   │   ├── security_agent.py     # (Legacy) Simple analysis agent
-│   │   └── autonomous_agent.py   # Main autonomous orchestration logic
-│   ├── tools/
-│   │   ├── tool_definitions.py   # AgentCore tool schemas (the "menu")
-│   │   ├── tool_executor.py      # Python logic for executing tools
-│   │   └── security_scanner.py   # Bandit scanner integration
-│   └── __init__.py
+│ ├── agents/
+│ │ ├── bedrock_client.py # Wrapper for AWS Bedrock converse API
+│ │ ├── security_agent.py # (Legacy) Simple analysis agent
+│ │ └── autonomous_agent.py # Main autonomous orchestration logic
+│ ├── tools/
+│ │ ├── tool_definitions.py # AgentCore tool schemas (the "menu")
+│ │ ├── tool_executor.py # Python logic for executing tools
+│ │ └── security_scanner.py # Bandit scanner integration
+│ └── init.py
 ├── tests/
-│   ├── test_autonomous_agent.py  # Tests autonomous behavior
-│   ├── test_bedrock_client.py    # Tests Bedrock connection
-│   ├── test_security_scanner.py  # Tests Bandit integration
-│   └── test_tool_executor.py     # Tests tool logic
-├── vulnerable-flask-app/         # Demo application for testing
-├── .env.example                  # Environment variable template
+│ ├── test_autonomous_agent.py # Tests autonomous behavior
+│ ├── test_bedrock_client.py # Tests Bedrock connection
+│ ├── test_security_scanner.py # Tests Bandit integration
+│ └── test_tool_executor.py # Tests tool logic
+├── vulnerable-flask-app/ # Demo Flask app with security flaws
+├── vulnerable-django-api/ # Demo Django REST API with security flaws
+├── vulnerable-express-api/ # Demo Express.js API with security flaws
+├── .env.example # Environment variable template
 ├── requirements.txt
 └── README.md
-Testing
+
+### Testing
 The project includes a comprehensive test suite using pytest. Tests cover tool execution, API client connections, and agent reasoning.
 
 Shell
 
+```
 # Run the complete test suite
 pytest tests/ -v
 # Run tests for a specific component
 pytest tests/test_security_scanner.py -v
 pytest tests/test_tool_executor.py -v
 pytest tests/test_autonomous_agent.py -v -s
-Test Results
-test_security_scanner.py::test_scan_repository        PASSED
-test_security_scanner.py::test_find_python_files      PASSED
-...
-test_tool_executor.py::test_execute_read_file         PASSED
-test_tool_executor.py::test_execute_analyze_context   PASSED
-test_tool_executor.py::test_execute_validate_syntax   PASSED
-...
-test_autonomous_agent.py::test_agent_initialization   PASSED
-test_autonomous_agent.py::test_agent_analysis_loop    PASSED
+```
+
 
 Total: 17/17 tests passing
 Limitations and Future Roadmap
